@@ -28,6 +28,17 @@ class API
         JSON.parse(self.get_response)
     end
 
+    def self.find_or_create_movie(title)
+        if parse_json["Response"] == "False"
+            "#{parse_json["Error"]}"
+        elsif Movie.all.detect {|movie| movie.title == parse_json["Title"]}
+            movie
+        else
+            Movie.new(self.class.new(title).parse_json)
+        end
+    end
+
+
 
 end
 
