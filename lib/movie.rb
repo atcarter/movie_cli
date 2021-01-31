@@ -15,8 +15,8 @@ class Movie
             self.class.attr_accessor(key.downcase)
             self.send(("#{key.downcase}="), value)
         end
-        @@all << self
-        @@current_movie = self
+        self.class.all << self
+        self.class.current_movie = self
     end
 
     #Show get an array of the users movie history
@@ -31,11 +31,15 @@ class Movie
 
     #Add unique movies to My Bookmarks
     def self.add_bookmark
-        self.class.bookmarks << @@current_movie unless @@bookmarks.include?(@@current_movie)
+        @@bookmarks << @@current_movie unless @@bookmarks.include?(@@current_movie)
     end
 
     def self.current_movie
         @@current_movie
+    end
+
+    def self.current_movie=(movie)
+        @@current_movie = movie
     end
 
     #returns true if the movie is removed from the collection of bookmarks and false if it didnt exist
@@ -50,6 +54,7 @@ class Movie
         bool    
     end
 
+    #return a string of all the ratings that a movie has
     def get_ratings
         string = ""
         array = self.ratings
@@ -58,6 +63,20 @@ class Movie
         end
         string
     end
+
+    def self.find_or_create_movie(title)
+        self.all.find do |mov|
+            return mov if mov.title.downcase == title
+        end
+            
+        api = API.new(title)
+        if api.parse_json == {"Response" => "False", "Error" => "Movie not found!"}
+            "Movie not found!"
+        else
+            Movie.new(api.parse_json)
+        end            
+    end
+
 
 
 end
