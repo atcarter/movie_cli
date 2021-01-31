@@ -3,13 +3,15 @@
 require 'net/http'
 require 'open-uri'
 require 'json'
-require_relative '../lib/movie.rb'
+# require_relative '../lib/movie.rb'
 
 class API
     attr_accessor :title, :url 
 
+    #Constant to hold majority of the url
     URL = "http://www.omdbapi.com/?i=tt3896198&apikey=6eb6e1aa&t="
 
+    #API instantiated with a title that gets appended to the URL constant
     def initialize(title)
         @title = title
         @url = URL + title
@@ -21,6 +23,7 @@ class API
         response.body
     end
 
+    
     def parse_json
         JSON.parse(self.get_response)
     end
@@ -30,4 +33,4 @@ end
 
 # api = API.new("the matrix")
 # mov = Movie.new(api.parse_json)
-# puts mov.ratings
+# puts mov.get_ratings
