@@ -31,7 +31,7 @@ class Movie
 
     #Add unique movies to My Bookmarks
     def self.add_bookmark
-        @@bookmarks << @@current_movie unless @@bookmarks.include?(@@current_movie)
+        @@bookmarks << @@current_movie unless @@bookmarks.find{|mov| mov.title == @@current_movie.title }
     end
 
     def self.current_movie
