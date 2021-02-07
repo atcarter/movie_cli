@@ -6,8 +6,9 @@ This repository allows anyone to download a movie CLI app that allows the user t
 ## Installation
 
 Clone this respository to your own machine. Keep in mind, you'll need to obtain your own API key from the website above and include that as your own .env file's API_KEY. Once you have an API key, run the code below and follow the instructions within the application:
+```
     $ ruby bin/movie_cli
-
+```
 ## Contributor's Guide
 
 Feel free to help expand the functionality of this application.
