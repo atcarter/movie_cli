@@ -35,7 +35,7 @@ class CLI
                     puts "_____________________________________________"
                 else          
                     input2 = ""
-                    while input2 != "n" || "y"
+                    while input2 != "n" || input2 != "y"
                         puts "\nWould you like to see the ratings for #{Movie.current_movie.title} [r] or add #{Movie.current_movie.title} to My Bookmarks? [y] or [n]"
                         input2 = gets.strip
 
@@ -82,7 +82,7 @@ class CLI
         else
             Movie.bookmarks.each do |movie|
                 puts "#{movie.title} (#{movie.year})"
-                puts "#{movie.get_ratings}"
+                puts "\n#{movie.get_ratings}"
                 puts "___________________________________"
             end
         end
