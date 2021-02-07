@@ -10,7 +10,7 @@ Clone this respository to your own machine. Keep in mind, you'll need to obtain 
 
 ## Contributor's Guide
 
-Feel free to help expand the functionality of this application while adhering to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Feel free to help expand the functionality of this application.
 
 ## License
 
