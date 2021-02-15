@@ -20,7 +20,7 @@ class Movie
     end
 
     #Show get an array of the users movie history
-    def self.all 
+    def self.all
         @@all
     end
 
@@ -76,6 +76,16 @@ class Movie
             Movie.new(api.parse_json)
         end            
     end
+
+    # create a method that returns an alphebitized list of bookmarked movies 
+    # def self.alphabetizeBookmarks
+    #      @@bookmarks.sort_by do |b|
+    #         b.title
+    #      end.each  do |bookmark|
+    #         puts "#{bookmark}"
+
+    #      end 
+    # end
 
 
 
